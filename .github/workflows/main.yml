@@ -5,17 +5,17 @@ on:
     branches:
       - main
       - dev
-      - feature/*
-      - hotfix/*
-      - release/*
+      - 'feature/**'
+      - 'hotfix/**'
+      - 'release/**'
       - infra/runner-toevoegen
   pull_request:
     branches:
       - main
       - dev
-      - feature/*
-      - hotfix/*
-      - release/*
+      - 'feature/**'
+      - 'hotfix/**'
+      - 'release/**'
       - infra/runner-toevoegen
  
 jobs:
