@@ -34,10 +34,10 @@ jobs:
         run: dotnet workload install maui-windows
  
       - name: Herstel afhankelijkheden
-        run: dotnet restore
+        run: dotnet restore -r win-x64
  
       - name: Bouw de applicatie
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build -c Release -r win-x64 -p:TargetFramework=net8.0-windows10.0.19041.0 --no-restore
  
       - name: Voer unit tests uit
         run: dotnet test --configuration Release --no-restore --no-build --verbosity normal
