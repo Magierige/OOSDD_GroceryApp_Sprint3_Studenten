@@ -1,0 +1,43 @@
+name: MAUI Unit Tests
+ 
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - 'feature/**'
+      - 'hotfix/**'
+      - 'release/**'
+      - infra/runner-toevoegen
+  pull_request:
+    branches:
+      - main
+      - dev
+      - 'feature/**'
+      - 'hotfix/**'
+      - 'release/**'
+      - infra/runner-toevoegen
+ 
+jobs:
+  build-android:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Install MAUI Workload
+        run: dotnet workload install maui-android
+
+      - name: Restore NuGet packages
+        run: dotnet restore Grocery.App/Grocery.App.csproj
+
+      - name: Build MAUI Android
+        run: dotnet build Grocery.App/Grocery.App.csproj -c Release -f net8.0-android
+
+      - name: Run unit tests
+        run: dotnet test -f net8.0-android --configuration Release --no-restore --no-build --verbosity normal
