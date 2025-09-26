@@ -26,7 +26,15 @@ namespace Grocery.Core.Data.Repositories
 
         public Product Add(Product item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                products.Add(item);
+                return item;
+            }
+            catch (Exception)
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public Product? Delete(Product item)
