@@ -21,9 +21,9 @@ public partial class ProductView : ContentPage
             return;
         }
 
-        if (!int.TryParse(stockField?.Text, out int stock) || stock < 0)
+        if (!int.TryParse(stockField?.Text, out int stock) || stock < 1)
         {
-            await DisplayAlert("Fout", "Stock moet een niet-negatief getal zijn.", "OK");
+            await DisplayAlert("Fout", "Stock moet een getal zijn groter dan 0.", "OK");
             return;
         }
 
