@@ -14,14 +14,15 @@
     <Border Stroke="#C49B33" StrokeThickness="4" Padding="10" Margin="10" HorizontalOptions="Center">
         <VerticalStackLayout>
             <HorizontalStackLayout Margin="20" VerticalOptions="Start">
-                
-                <Entry Placeholder="naam" />
-                <Entry Placeholder="1"
-                    Keyboard="Numeric">
+
+                <Entry x:Name="nameField" Placeholder="naam" />
+                <Entry x:Name="stockField" Placeholder="1"
+        Keyboard="Numeric">
                 </Entry>
-                <Button Text="Teovoegen" />
+                <Button Text="Teovoegen" Clicked="OnAddClicked"/>
             </HorizontalStackLayout>
-        
+
+
             <CollectionView ItemsSource="{Binding Products}" Margin="20" HorizontalOptions="Center">
             
                 <CollectionView.ItemsLayout>
